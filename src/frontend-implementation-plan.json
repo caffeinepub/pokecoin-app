@@ -1,0 +1,99 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Shiny Coin Tracker Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement Pokecoin balance tracking UI with input form and balance history display",
+      "acceptanceCriteria": [
+        "Users can input their current Pokecoin balance",
+        "Users can view their Pokecoin balance history",
+        "Balance updates are persisted in the backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PokecoinTracker.tsx",
+          "operation": "create",
+          "description": "Create a component that displays the current Pokecoin balance fetched from the backend using viewPokecoinBalance() and provides a form to log new balance entries using logPokecoinBalance(). Include the generated pokecoin icon at frontend/public/assets/generated/pokecoin-icon.dim_256x256.png as visual branding. Display balance history and handle loading/error states."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the PokecoinTracker component into the main app layout, adding navigation or a tab/section for Pokecoin tracking so users can access the balance tracking feature."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create shiny female Pokemon tracker UI with add/search functionality and collection display",
+      "acceptanceCriteria": [
+        "Users can add shiny female Pokemon to their collection with species name",
+        "Users can view a list of all tracked shiny female Pokemon",
+        "Each Pokemon entry includes species identification",
+        "Users can mark Pokemon as found or desired"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ShinyFemaleTracker.tsx",
+          "operation": "create",
+          "description": "Create a component that allows users to log shiny female Pokemon using logPokemon() with name, isShiny=true, and isFemale=true. Include a search input that calls searchShinyFemalePokemon() to filter results. Display each Pokemon entry with species name and status (found/desired). Use the generated shiny sparkle icon at frontend/public/assets/generated/shiny-sparkle.dim_128x128.png to visually highlight shiny entries."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the ShinyFemaleTracker component into the main app, adding a navigation link or tab so users can access the shiny female Pokemon tracking feature."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build Google Play payout tracking UI with payout form and history display",
+      "acceptanceCriteria": [
+        "Users can record payout amounts in their local currency",
+        "Users can view payout history and totals",
+        "Payout records are linked to Pokecoin transactions",
+        "Users can see cumulative payout totals"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PayoutManager.tsx",
+          "operation": "create",
+          "description": "Create a component that displays payout history fetched from viewPayouts() and provides a form to log new payouts using logPayout() with amount, currency, and date inputs. Calculate and display cumulative payout totals. Include the generated payout badge icon at frontend/public/assets/generated/payout-badge.dim_128x128.png for visual branding. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the PayoutManager component into the main app layout, adding navigation or a tab/section for payout management so users can access the payout tracking feature."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Apply Pokemon-themed visual design with vibrant colors, playful typography, and card-based layouts",
+      "acceptanceCriteria": [
+        "UI uses a Pokemon-inspired color palette with vibrant accent colors",
+        "Typography is playful yet readable",
+        "Layout uses card-based components for Pokemon and transaction displays",
+        "Overall design feels cohesive and game-like"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global styles to include a Pokemon-inspired color palette with vibrant yellows, reds, blues, and accent colors. Add custom font styling for playful yet readable typography. Define utility classes for card-based layouts and game-like visual effects."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the Tailwind configuration with Pokemon-themed color tokens (e.g., pokecoin-gold, shiny-pink, payout-green) and custom spacing/border-radius utilities for card-based layouts. Configure typography settings for playful font rendering."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Apply Pokemon-themed styling to the main app layout using the new color palette and typography. Use card-based layout components from shadcn/ui (e.g., Card) to structure the interface cohesively. Ensure all sections feel visually unified with game-like aesthetics."
+        }
+      ]
+    }
+  ]
+}

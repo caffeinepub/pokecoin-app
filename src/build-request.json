@@ -1,0 +1,100 @@
+{
+  "kind": "build_request",
+  "title": "Build Pokecoin tracking app with shiny female Pokemon finder",
+  "projectName": "Shiny Coin Tracker",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a Pokecoin balance tracking system that allows users to log and view their current Pokecoin balance from Pokemon Go",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Pokecoin app for Pokemon go"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can input their current Pokecoin balance",
+        "Users can view their Pokecoin balance history",
+        "Balance updates are persisted in the backend"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a shiny female Pokemon tracker where users can log and search for shiny female Pokemon they've encountered or are seeking",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "finds shiny female pokemon"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add shiny female Pokemon to their collection with species name",
+        "Users can view a list of all tracked shiny female Pokemon",
+        "Each Pokemon entry includes species identification",
+        "Users can mark Pokemon as found or desired"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a payout management system where users can track and manage Google Play payout amounts associated with their Pokecoin earnings",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "pays out to Google play"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can record payout amounts in their local currency",
+        "Users can view payout history and totals",
+        "Payout records are linked to Pokecoin transactions",
+        "Users can see cumulative payout totals"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Design a cohesive Pokemon-themed visual interface with vibrant colors, playful typography, and card-based layouts that reflect the Pokemon universe aesthetic while maintaining clean usability",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "UI uses a Pokemon-inspired color palette with vibrant accent colors",
+        "Typography is playful yet readable",
+        "Layout uses card-based components for Pokemon and transaction displays",
+        "Overall design feels cohesive and game-like"
+      ]
+    }
+  ],
+  "constraints": [
+    "This app tracks user data locally and does not integrate with actual Pokemon Go APIs or services",
+    "Google Play payouts are tracked as records only; no actual payment processing integration is included",
+    "Pokemon data is user-entered; no automated Pokemon Go data sync"
+  ],
+  "nonGoals": [
+    "Direct integration with Pokemon Go game servers or APIs",
+    "Actual Google Play payment processing or API integration",
+    "Real-time Pokemon location tracking or GPS features",
+    "Authentication with Pokemon Go accounts",
+    "Automated Pokemon discovery or detection"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Stylized Pokecoin icon illustration with metallic gold texture (pokecoin-icon.dim_256x256.png)",
+      "Shiny sparkle effect icon in pink and gold gradient (shiny-sparkle.dim_128x128.png)",
+      "Google Play payout badge icon in green and white (payout-badge.dim_128x128.png)"
+    ],
+    "edits": []
+  }
+}

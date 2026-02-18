@@ -1,0 +1,82 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-pokecoin-balance-tracking-system-that-allows-users-to-log-and-view-their-current-pokecoin-balance-from-pokemon-go",
+      "featureTitle": "Create a Pokecoin balance tracking system that allows users to log and view their current Pokecoin balance from Pokemon Go",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/PokecoinTracker.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-shiny-female-pokemon-tracker-where-users-can-log-and-search-for-shiny-female-pokemon-they-ve-encountered-or-are-seeking",
+      "featureTitle": "Implement a shiny female Pokemon tracker where users can log and search for shiny female Pokemon they've encountered or are seeking",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ShinyFemaleTracker.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-payout-management-system-where-users-can-track-and-manage-google-play-payout-amounts-associated-with-their-pokecoin-earnings",
+      "featureTitle": "Create a payout management system where users can track and manage Google Play payout amounts associated with their Pokecoin earnings",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/PayoutManager.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-a-cohesive-pokemon-themed-visual-interface-with-vibrant-colors-playful-typography-and-card-based-layouts-that-reflect-the-pokemon-universe-aesthetic-while-maintaining-clean-usability",
+      "featureTitle": "Design a cohesive Pokemon-themed visual interface with vibrant colors, playful typography, and card-based layouts that reflect the Pokemon universe aesthetic while maintaining clean usability",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

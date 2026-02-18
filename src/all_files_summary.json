@@ -1,0 +1,20 @@
+{
+  "backend/main.mo": "Motoko actor defining three core data stores (pokecoinBalances, pokemonData, payouts) with functions to log/view Pokecoin balances, log/search shiny female Pokemon, and log/view payouts, all scoped per caller Principal.",
+  "feature_evidence.json": "Feature evidence report documenting four implemented features: Pokecoin balance tracking, shiny female Pokemon tracker, payout management system, and Pokemon-themed UI design, each with associated files, components, and test IDs.",
+  "frontend-file-summaries.txt": "JSON-formatted summaries of nine frontend files including React Query hooks, three main tracker components (Pokecoin, ShinyFemale, Payout), header/footer components, main App with tabs, and styling configuration files.",
+  "frontend/index.css": "Tailwind CSS base styles defining CSS custom properties for light and dark themes using OKLCH color space, including sidebar, chart, and UI component color tokens.",
+  "frontend/index.html": "HTML entry point with UTF-8 charset, viewport meta tag, 'Pokecoin App' title, root div, and module script loading main.tsx.",
+  "frontend/src/App.tsx": "Main React app component with Internet Identity authentication, three-tab interface (Pokecoins, Shiny Pokemon, Payouts), welcome screen for unauthenticated users, and theme provider wrapper.",
+  "frontend/src/components/Footer.tsx": "Footer component displaying copyright year, app name, and attribution link to caffeine.ai with UTM tracking parameters based on hostname.",
+  "frontend/src/components/Header.tsx": "Header component with Shiny Coin Tracker branding, sparkle icon, and conditional login/logout button based on Internet Identity authentication state.",
+  "frontend/src/components/PayoutManager.tsx": "Payout management component with form to record payouts (amount, currency, date), displays total earnings by currency, and shows payout history with currency selection from predefined list.",
+  "frontend/src/components/PokecoinTracker.tsx": "React component that displays the current Pokecoin balance and provides a form to update it, using custom hooks for querying and mutating balance data with loading states and toast notifications.",
+  "frontend/src/components/ShinyFemaleTracker.tsx": "React component for tracking shiny female Pokemon collection with add/search functionality, displaying a list of Pokemon with badges showing collection count and using mutations to log new entries.",
+  "frontend/src/hooks/useActor.ts": "Custom hook that creates and manages an authenticated or anonymous actor instance based on Internet Identity, automatically invalidating and refetching dependent queries when the actor changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides React context and hooks for Internet Identity authentication, managing login/logout state, identity persistence, and AuthClient creation with configurable options.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for all backend operations including Pokecoin balance, shiny female Pokemon tracking, and payout management with automatic cache invalidation on mutations.",
+  "frontend/src/index.css": "Tailwind CSS configuration with custom Pokemon-themed color variables (pokecoin-gold, shiny-pink, payout-green) and styled card components with hover effects for light and dark modes.",
+  "frontend/src/main.tsx": "Application entry point that sets up React Query client and Internet Identity provider wrappers around the main App component.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration defining a Pokemon-themed design system with custom colors (pokecoin-gold, shiny-pink, payout-green, pokemon-blue/red), OKLCH color format, container settings, border radius variables, and custom animations including shimmer and accordion effects.",
+  "project_state.json": "Project state file for a Pokemon Go companion app tracking Pokecoins, shiny female Pokemon, and Google Play payouts with four existing features implemented and three pending feature requests."
+}

@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.75rem;
+        --background: 0.98 0 0;
+        --foreground: 0.15 0 0;
+        --card: 1 0 0;
+        --card-foreground: 0.15 0 0;
+        --popover: 1 0 0;
+        --popover-foreground: 0.15 0 0;
+        --primary: 0.25 0 0;
+        --primary-foreground: 0.98 0 0;
+        --secondary: 0.96 0 0;
+        --secondary-foreground: 0.25 0 0;
+        --muted: 0.96 0 0;
+        --muted-foreground: 0.50 0 0;
+        --accent: 0.96 0 0;
+        --accent-foreground: 0.25 0 0;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.98 0 0;
+        --border: 0.90 0 0;
+        --input: 0.90 0 0;
+        --ring: 0.65 0 0;
+        --chart-1: 0.646 0.222 41.116;
+        --chart-2: 0.6 0.118 184.704;
+        --chart-3: 0.398 0.07 227.392;
+        --chart-4: 0.828 0.189 84.429;
+        --chart-5: 0.769 0.188 70.08;
+        
+        /* Pokemon-themed colors */
+        --pokecoin-gold: 0.75 0.18 65;
+        --shiny-pink: 0.70 0.22 340;
+        --payout-green: 0.65 0.20 145;
+        --pokemon-blue: 0.60 0.18 240;
+        --pokemon-red: 0.58 0.24 25;
+    }
+
+    .dark {
+        --background: 0.12 0 0;
+        --foreground: 0.98 0 0;
+        --card: 0.18 0 0;
+        --card-foreground: 0.98 0 0;
+        --popover: 0.22 0 0;
+        --popover-foreground: 0.98 0 0;
+        --primary: 0.90 0 0;
+        --primary-foreground: 0.18 0 0;
+        --secondary: 0.25 0 0;
+        --secondary-foreground: 0.98 0 0;
+        --muted: 0.25 0 0;
+        --muted-foreground: 0.65 0 0;
+        --accent: 0.35 0 0;
+        --accent-foreground: 0.98 0 0;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.18 0 0;
+        --border: 1 0 0 / 12%;
+        --input: 1 0 0 / 18%;
+        --ring: 0.50 0 0;
+        --chart-1: 0.488 0.243 264.376;
+        --chart-2: 0.696 0.17 162.48;
+        --chart-3: 0.769 0.188 70.08;
+        --chart-4: 0.627 0.265 303.9;
+        --chart-5: 0.645 0.246 16.439;
+        
+        /* Pokemon-themed colors for dark mode */
+        --pokecoin-gold: 0.78 0.20 65;
+        --shiny-pink: 0.75 0.25 340;
+        --payout-green: 0.68 0.22 145;
+        --pokemon-blue: 0.65 0.20 240;
+        --pokemon-red: 0.62 0.26 25;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    }
+}
+
+@layer components {
+    /* Pokemon-themed card styles */
+    .pokecoin-card {
+        border-width: 2px;
+        border-color: oklch(var(--pokecoin-gold) / 0.2);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        transition: all 0.3s;
+        background: linear-gradient(135deg, oklch(var(--card)) 0%, oklch(var(--pokecoin-gold) / 0.05) 100%);
+    }
+    
+    .pokecoin-card:hover {
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+    
+    .shiny-card {
+        border-width: 2px;
+        border-color: oklch(var(--shiny-pink) / 0.2);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        transition: all 0.3s;
+        background: linear-gradient(135deg, oklch(var(--card)) 0%, oklch(var(--shiny-pink) / 0.05) 100%);
+    }
+    
+    .shiny-card:hover {
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+    
+    .payout-card {
+        border-width: 2px;
+        border-color: oklch(var(--payout-green) / 0.2);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        transition: all 0.3s;
+        background: linear-gradient(135deg, oklch(var(--card)) 0%, oklch(var(--payout-green) / 0.05) 100%);
+    }
+    
+    .payout-card:hover {
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+    
+    /* Icon wrappers with glow effect */
+    .pokecoin-icon-wrapper {
+        @apply relative;
+    }
+    
+    .pokecoin-icon-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 9999px;
+        filter: blur(1rem);
+        opacity: 0.3;
+        background: oklch(var(--pokecoin-gold));
+    }
+    
+    .shiny-icon-wrapper {
+        @apply relative;
+    }
+    
+    .shiny-icon-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 9999px;
+        filter: blur(1rem);
+        opacity: 0.3;
+        background: oklch(var(--shiny-pink));
+    }
+    
+    .payout-icon-wrapper {
+        @apply relative;
+    }
+    
+    .payout-icon-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 9999px;
+        filter: blur(1rem);
+        opacity: 0.3;
+        background: oklch(var(--payout-green));
+    }
+    
+    /* Smooth animations */
+    .pokemon-card {
+        @apply transition-all duration-200;
+    }
+    
+    .pokemon-card:hover {
+        @apply scale-[1.02];
+    }
+    
+    .payout-item {
+        @apply transition-all duration-200;
+    }
+    
+    .payout-item:hover {
+        background: linear-gradient(to right, oklch(var(--payout-green) / 0.1), oklch(var(--payout-green) / 0.15));
+    }
+}
+
+@layer utilities {
+    /* Custom scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: oklch(var(--muted) / 0.3);
+        border-radius: 9999px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: oklch(var(--muted-foreground) / 0.3);
+        border-radius: 9999px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: oklch(var(--muted-foreground) / 0.5);
+    }
+}

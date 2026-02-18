@@ -1,0 +1,11 @@
+{
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including Pokecoin balance tracking, shiny female Pokemon management, and payout recording with proper state invalidation.",
+  "frontend/src/components/PokecoinTracker.tsx": "Component for tracking and updating Pokecoin balance with visual display of current balance and input form for updates, now with proper null checking for TypeScript safety.",
+  "frontend/src/components/ShinyFemaleTracker.tsx": "Component for managing shiny female Pokemon collection with add/search functionality and visual list display with sparkle effects.",
+  "frontend/src/components/PayoutManager.tsx": "Component for recording and viewing Google Play payouts with currency selection, total earnings calculation, and payout history display.",
+  "frontend/src/components/Header.tsx": "Application header with branding and Internet Identity login/logout functionality.",
+  "frontend/src/components/Footer.tsx": "Application footer with copyright information and Caffeine.ai attribution with UTM tracking.",
+  "frontend/src/App.tsx": "Main application component with tabbed interface for Pokecoins, Shiny Pokemon, and Payouts sections, including authentication flow and theme provider setup.",
+  "frontend/src/index.css": "Global styles with Pokemon-themed OKLCH color system including pokecoin-gold, shiny-pink, and payout-green colors with custom card styles and animations, now using direct CSS properties instead of @apply with opacity modifiers.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Pokemon-themed color tokens and custom animations for the game-like aesthetic."
+}

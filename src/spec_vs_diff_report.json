@@ -1,0 +1,38 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-18T21:11:08.295Z",
+  "summary": "The implementation fully addresses all four requirements (REQ-1 through REQ-4) with complete backend and frontend functionality for Pokecoin tracking, shiny female Pokemon management, payout tracking, and Pokemon-themed UI design. However, the implementation lacks balance history functionality required by REQ-1's acceptance criteria.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Users can view their Pokecoin balance history",
+      "reason": "The backend only stores and returns the current balance (single Nat value per user), not a history of balance changes over time. The viewPokecoinBalance function returns a single balance value, and logPokecoinBalance overwrites rather than appending to history.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.92,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/PayoutManager.tsx",
+    "frontend/src/components/PokecoinTracker.tsx",
+    "frontend/src/components/ShinyFemaleTracker.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
