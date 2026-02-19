@@ -2,11 +2,13 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-pokecoin-balance-tracking-system-that-allows-users-to-log-and-view-their-current-pokecoin-balance-from-pokemon-go",
-      "featureTitle": "Create a Pokecoin balance tracking system that allows users to log and view their current Pokecoin balance from Pokemon Go",
+      "featureId": "feature-implement-a-match-three-tile-game-where-users-can-play-by-swapping-adjacent-tiles-to-create-matches-of-three-or-more-identical-pokemon-tiles",
+      "featureTitle": "Implement a match-three tile game where users can play by swapping adjacent tiles to create matches of three or more identical Pokemon tiles",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/PokecoinTracker.tsx"
+        "frontend/src/components/GameBoard.tsx",
+        "frontend/src/components/GameTile.tsx",
+        "frontend/src/components/MatchThreeGame.tsx",
+        "frontend/src/hooks/useGameLogic.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,16 +18,17 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-5"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-a-shiny-female-pokemon-tracker-where-users-can-log-and-search-for-shiny-female-pokemon-they-ve-encountered-or-are-seeking",
-      "featureTitle": "Implement a shiny female Pokemon tracker where users can log and search for shiny female Pokemon they've encountered or are seeking",
+      "featureId": "feature-award-pokecoins-to-users-based-on-their-match-three-game-performance-automatically-updating-their-pokecoin-balance-when-they-complete-matches",
+      "featureTitle": "Award Pokecoins to users based on their match-three game performance, automatically updating their Pokecoin balance when they complete matches",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/ShinyFemaleTracker.tsx"
+        "frontend/src/components/GameScoreDisplay.tsx",
+        "frontend/src/components/MatchThreeGame.tsx",
+        "frontend/src/hooks/useQueries.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -35,16 +38,17 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-6"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-create-a-payout-management-system-where-users-can-track-and-manage-google-play-payout-amounts-associated-with-their-pokecoin-earnings",
-      "featureTitle": "Create a payout management system where users can track and manage Google Play payout amounts associated with their Pokecoin earnings",
+      "featureId": "feature-integrate-shiny-female-pokemon-discovery-into-the-match-three-game-allowing-users-to-encounter-and-unlock-shiny-female-pokemon-through-gameplay",
+      "featureTitle": "Integrate shiny female Pokemon discovery into the match-three game, allowing users to encounter and unlock shiny female Pokemon through gameplay",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/PayoutManager.tsx"
+        "frontend/src/components/MatchThreeGame.tsx",
+        "frontend/src/components/ShinyDiscoveryNotification.tsx",
+        "frontend/src/hooks/useGameLogic.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -54,17 +58,17 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-7"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-design-a-cohesive-pokemon-themed-visual-interface-with-vibrant-colors-playful-typography-and-card-based-layouts-that-reflect-the-pokemon-universe-aesthetic-while-maintaining-clean-usability",
-      "featureTitle": "Design a cohesive Pokemon-themed visual interface with vibrant colors, playful typography, and card-based layouts that reflect the Pokemon universe aesthetic while maintaining clean usability",
+      "featureId": "feature-create-a-payout-calculation-system-that-determines-google-play-payout-amounts-based-on-pokecoins-earned-through-the-match-three-game",
+      "featureTitle": "Create a payout calculation system that determines Google Play payout amounts based on Pokecoins earned through the match-three game",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/src/components/GamePayoutSummary.tsx",
+        "frontend/src/components/MatchThreeGame.tsx",
+        "frontend/src/hooks/useQueries.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -74,7 +78,25 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-new-game-tab-to-the-main-app-navigation-that-hosts-the-match-three-tile-game-alongside-the-existing-pokecoins-shiny-pokemon-and-payouts-tabs",
+      "featureTitle": "Add a new Game tab to the main app navigation that hosts the match-three tile game alongside the existing Pokecoins, Shiny Pokemon, and Payouts tabs",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
       ],
       "confidence": "high"
     }

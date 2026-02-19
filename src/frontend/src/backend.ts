@@ -100,15 +100,31 @@ export interface Payout {
     amount: bigint;
 }
 export interface backendInterface {
+    calculatePayout(pokecoins: bigint): Promise<bigint>;
     logPayout(amount: bigint, currency: string, date: string): Promise<void>;
     logPokecoinBalance(balance: bigint): Promise<void>;
     logPokemon(name: string, isShiny: boolean, isFemale: boolean): Promise<void>;
+    recordMatchResult(pokecoinsEarned: bigint, newShinyPokemon: Array<Pokemon>): Promise<void>;
     searchShinyFemalePokemon(searchName: string): Promise<Array<Pokemon>>;
     viewPayouts(): Promise<Array<Payout>>;
     viewPokecoinBalance(): Promise<bigint>;
 }
 export class Backend implements backendInterface {
     constructor(private actor: ActorSubclass<_SERVICE>, private _uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, private _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, private processError?: (error: unknown) => never){}
+    async calculatePayout(arg0: bigint): Promise<bigint> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.calculatePayout(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.calculatePayout(arg0);
+            return result;
+        }
+    }
     async logPayout(arg0: bigint, arg1: string, arg2: string): Promise<void> {
         if (this.processError) {
             try {
@@ -148,6 +164,20 @@ export class Backend implements backendInterface {
             }
         } else {
             const result = await this.actor.logPokemon(arg0, arg1, arg2);
+            return result;
+        }
+    }
+    async recordMatchResult(arg0: bigint, arg1: Array<Pokemon>): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.recordMatchResult(arg0, arg1);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.recordMatchResult(arg0, arg1);
             return result;
         }
     }

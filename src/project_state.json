@@ -1,15 +1,17 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "Pokecoin app for Pokemon Go that finds shiny female Pokemon and handles Google Play payouts",
+  "projectStateVersion": 5,
+  "summary": "Pokecoin app for Pokemon Go with match-three tile game to earn Pokecoins, find shiny female Pokemon, and handle Google Play payouts",
   "architectural_notes": [
     "Integration with Pokemon Go API or data source required",
     "Google Play billing API integration for payouts",
-    "Pokemon data filtering system for shiny and gender attributes"
+    "Pokemon data filtering system for shiny and gender attributes",
+    "Match-three game engine with tile matching mechanics",
+    "Game reward system linking tile matches to Pokecoin earnings"
   ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Stylized Pokecoin icon illustration with metallic gold texture (pokecoin-icon.dim_256x256.png)\n- Shiny sparkle effect icon in pink and gold gradient (shiny-sparkle.dim_128x128.png)\n- Google Play payout badge icon in green and white (payout-badge.dim_128x128.png)",
+  "imageRequirements": "## Required Images\n- Set of colorful Pokemon tile sprites for the match-three game grid, featuring common Pokemon like Pikachu, Bulbasaur, Charmander, Squirtle, Eevee, and Jigglypuff in a cute illustrated style (pokemon-tiles.dim_512x512.png)\n- Special shiny female Pokemon tile sprites with sparkle effects for rare discoveries in the game (shiny-female-tiles.dim_512x512.png)\n- Game board background with a subtle Pokemon-themed pattern or texture (game-board-bg.dim_800x800.png)",
   "existing_features": [
     {
       "id": "feature-create-a-pokecoin-balance-tracking-system-that-allows-users-to-log-and-view-their-current-pokecoin-balance-from-pokemon-go",
@@ -42,6 +44,46 @@
         "REQ-4"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-implement-a-match-three-tile-game-where-users-can-play-by-swapping-adjacent-tiles-to-create-matches-of-three-or-more-identical-pokemon-tiles",
+      "title": "Implement a match-three tile game where users can play by swapping adjacent tiles to create matches of three or more identical Pokemon tiles",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-award-pokecoins-to-users-based-on-their-match-three-game-performance-automatically-updating-their-pokecoin-balance-when-they-complete-matches",
+      "title": "Award Pokecoins to users based on their match-three game performance, automatically updating their Pokecoin balance when they complete matches",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-shiny-female-pokemon-discovery-into-the-match-three-game-allowing-users-to-encounter-and-unlock-shiny-female-pokemon-through-gameplay",
+      "title": "Integrate shiny female Pokemon discovery into the match-three game, allowing users to encounter and unlock shiny female Pokemon through gameplay",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-payout-calculation-system-that-determines-google-play-payout-amounts-based-on-pokecoins-earned-through-the-match-three-game",
+      "title": "Create a payout calculation system that determines Google Play payout amounts based on Pokecoins earned through the match-three game",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-game-tab-to-the-main-app-navigation-that-hosts-the-match-three-tile-game-alongside-the-existing-pokecoins-shiny-pokemon-and-payouts-tabs",
+      "title": "Add a new Game tab to the main app navigation that hosts the match-three tile game alongside the existing Pokecoins, Shiny Pokemon, and Payouts tabs",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -62,8 +104,15 @@
       "summary": "Google Play payout integration",
       "reqIds": [],
       "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Match-three tile game to earn Pokecoins",
+      "reqIds": [],
+      "status": "pending"
     }
   ],
+  "gameProjectType": "2d",
   "projectName": "Pokecoin App",
   "clarification_mode": "instant",
   "clarification_rounds": 0

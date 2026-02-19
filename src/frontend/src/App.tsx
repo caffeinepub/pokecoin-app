@@ -6,9 +6,10 @@ import { Footer } from './components/Footer';
 import { PokecoinTracker } from './components/PokecoinTracker';
 import { ShinyFemaleTracker } from './components/ShinyFemaleTracker';
 import { PayoutManager } from './components/PayoutManager';
+import { MatchThreeGame } from './components/MatchThreeGame';
 import { useInternetIdentity } from './hooks/useInternetIdentity';
 import { Button } from './components/ui/button';
-import { Sparkles, Coins, DollarSign } from 'lucide-react';
+import { Sparkles, Coins, DollarSign, Gamepad2 } from 'lucide-react';
 
 function App() {
   const { identity, login, isLoggingIn, loginStatus } = useInternetIdentity();
@@ -24,6 +25,7 @@ function App() {
             <div className="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-center gap-3">
+                  <Gamepad2 className="w-16 h-16 text-pokemon-blue" />
                   <Sparkles className="w-16 h-16 text-shiny-pink" />
                   <Coins className="w-16 h-16 text-pokecoin-gold" />
                   <DollarSign className="w-16 h-16 text-payout-green" />
@@ -32,8 +34,8 @@ function App() {
                   Welcome to Shiny Coin Tracker
                 </h2>
                 <p className="text-xl text-muted-foreground max-w-2xl">
-                  Track your Pokemon GO Pokecoins, manage your shiny female Pokemon collection, 
-                  and monitor your Google Play payouts all in one place!
+                  Play the match-three game to earn Pokecoins, discover shiny female Pokemon, 
+                  and track your Google Play payouts all in one place!
                 </p>
               </div>
               <Button 
@@ -46,8 +48,15 @@ function App() {
               </Button>
             </div>
           ) : (
-            <Tabs defaultValue="pokecoins" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-8 h-auto p-1">
+            <Tabs defaultValue="game" className="w-full">
+              <TabsList className="grid w-full grid-cols-4 mb-8 h-auto p-1">
+                <TabsTrigger 
+                  value="game" 
+                  className="data-[state=active]:bg-pokemon-blue/20 data-[state=active]:text-pokemon-blue flex items-center gap-2 py-3"
+                >
+                  <Gamepad2 className="w-4 h-4" />
+                  <span className="hidden sm:inline">Game</span>
+                </TabsTrigger>
                 <TabsTrigger 
                   value="pokecoins" 
                   className="data-[state=active]:bg-pokecoin-gold/20 data-[state=active]:text-pokecoin-gold flex items-center gap-2 py-3"
@@ -70,6 +79,10 @@ function App() {
                   <span className="hidden sm:inline">Payouts</span>
                 </TabsTrigger>
               </TabsList>
+              
+              <TabsContent value="game" className="space-y-4">
+                <MatchThreeGame />
+              </TabsContent>
               
               <TabsContent value="pokecoins" className="space-y-4">
                 <PokecoinTracker />

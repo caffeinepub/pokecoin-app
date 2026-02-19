@@ -1,97 +1,140 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Shiny Coin Tracker Frontend Implementation",
+  "title": "Add Match-Three Tile Game to Earn Pokecoins and Find Shiny Female Pokemon",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Implement Pokecoin balance tracking UI with input form and balance history display",
+      "id": "REQ-5",
+      "summary": "Implement a match-three tile game with Pokemon tiles that supports swapping, matching, and cascading mechanics",
       "acceptanceCriteria": [
-        "Users can input their current Pokecoin balance",
-        "Users can view their Pokecoin balance history",
-        "Balance updates are persisted in the backend"
+        "Game board displays a grid of Pokemon-themed tiles",
+        "Users can swap adjacent tiles by clicking or dragging",
+        "Three or more matching tiles in a row or column are detected and removed",
+        "New tiles fall from the top to fill empty spaces",
+        "Game includes visual feedback for valid/invalid moves and matches"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/PokecoinTracker.tsx",
+          "path": "frontend/src/components/MatchThreeGame.tsx",
           "operation": "create",
-          "description": "Create a component that displays the current Pokecoin balance fetched from the backend using viewPokecoinBalance() and provides a form to log new balance entries using logPokecoinBalance(). Include the generated pokecoin icon at frontend/public/assets/generated/pokecoin-icon.dim_256x256.png as visual branding. Display balance history and handle loading/error states."
+          "description": "Create the main match-three game component that renders a grid of Pokemon tiles, handles tile swapping logic, detects matches, manages game state (score, moves, discovered shinies), and uses the generated tile images from frontend/public/assets/generated/pokemon-tiles.dim_512x512.png, frontend/public/assets/generated/shiny-female-tiles.dim_512x512.png, and frontend/public/assets/generated/game-board-bg.dim_800x800.png as static assets. Implement tile swap animations, match detection algorithm, cascade mechanics for falling tiles, and visual feedback for valid/invalid moves."
         },
         {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Wire the PokecoinTracker component into the main app layout, adding navigation or a tab/section for Pokecoin tracking so users can access the balance tracking feature."
+          "path": "frontend/src/components/GameBoard.tsx",
+          "operation": "create",
+          "description": "Create a GameBoard component that manages the tile grid state, handles user interactions (click/drag to swap tiles), applies the game-board-bg.dim_800x800.png background image, and emits events for matches and special tile discoveries. Use Tailwind CSS for responsive grid layout and Pokemon-themed styling."
+        },
+        {
+          "path": "frontend/src/components/GameTile.tsx",
+          "operation": "create",
+          "description": "Create a GameTile component that renders individual Pokemon tiles with appropriate sprites from the pokemon-tiles.dim_512x512.png sprite sheet, handles selection state, animates swaps and matches, and displays special shiny female variants using shiny-female-tiles.dim_512x512.png when appropriate."
+        },
+        {
+          "path": "frontend/src/hooks/useGameLogic.ts",
+          "operation": "create",
+          "description": "Create a custom hook that encapsulates match-three game logic including board initialization, tile swap validation, match detection (horizontal and vertical), cascade/refill logic, combo tracking, and score calculation. Return game state and action handlers for the MatchThreeGame component."
         }
       ]
     },
     {
-      "id": "REQ-2",
-      "summary": "Create shiny female Pokemon tracker UI with add/search functionality and collection display",
+      "id": "REQ-6",
+      "summary": "Award Pokecoins based on match-three game performance and update user balance through backend integration",
       "acceptanceCriteria": [
-        "Users can add shiny female Pokemon to their collection with species name",
-        "Users can view a list of all tracked shiny female Pokemon",
-        "Each Pokemon entry includes species identification",
-        "Users can mark Pokemon as found or desired"
+        "Each successful match awards a specific number of Pokecoins",
+        "Pokecoin rewards are calculated based on match size or combo chains",
+        "Game communicates earned Pokecoins to the backend to update user balance",
+        "User's total Pokecoin balance reflects game earnings in real-time",
+        "Visual feedback shows Pokecoins earned after each match"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/ShinyFemaleTracker.tsx",
-          "operation": "create",
-          "description": "Create a component that allows users to log shiny female Pokemon using logPokemon() with name, isShiny=true, and isFemale=true. Include a search input that calls searchShinyFemalePokemon() to filter results. Display each Pokemon entry with species name and status (found/desired). Use the generated shiny sparkle icon at frontend/public/assets/generated/shiny-sparkle.dim_128x128.png to visually highlight shiny entries."
+          "path": "frontend/src/components/MatchThreeGame.tsx",
+          "operation": "modify",
+          "description": "Add Pokecoin earning logic that calculates rewards based on match size and combo chains. Display earned Pokecoins after each match with animated feedback using the pokecoin-gold theme color. Track total Pokecoins earned during the game session and integrate with the backend recordMatchResult method when the game ends or at key milestones."
         },
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/components/GameScoreDisplay.tsx",
+          "operation": "create",
+          "description": "Create a component that displays current game score, Pokecoins earned this session, combo multiplier, and move counter. Use the existing pokecoin-icon.dim_256x256.png asset and pokecoin-gold styling for visual consistency with the rest of the app."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
           "operation": "modify",
-          "description": "Wire the ShinyFemaleTracker component into the main app, adding a navigation link or tab so users can access the shiny female Pokemon tracking feature."
+          "description": "Ensure the existing Pokecoin balance query and mutation hooks work seamlessly with game-earned Pokecoins by invalidating the balance query after recordMatchResult is called. Verify the mutation integration supports the game component's real-time balance updates."
         }
       ]
     },
     {
-      "id": "REQ-3",
-      "summary": "Build Google Play payout tracking UI with payout form and history display",
+      "id": "REQ-7",
+      "summary": "Integrate shiny female Pokemon discovery into the match-three game with automatic collection logging",
       "acceptanceCriteria": [
-        "Users can record payout amounts in their local currency",
-        "Users can view payout history and totals",
-        "Payout records are linked to Pokecoin transactions",
-        "Users can see cumulative payout totals"
+        "Shiny female Pokemon appear as rare special tiles during gameplay",
+        "When users match shiny female Pokemon tiles, the Pokemon is automatically logged to their collection",
+        "Visual notification appears when a shiny female Pokemon is discovered",
+        "Discovered shiny female Pokemon are added to the ShinyFemaleTracker component",
+        "Game tracks which shiny female Pokemon have been found to prevent duplicates"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/PayoutManager.tsx",
-          "operation": "create",
-          "description": "Create a component that displays payout history fetched from viewPayouts() and provides a form to log new payouts using logPayout() with amount, currency, and date inputs. Calculate and display cumulative payout totals. Include the generated payout badge icon at frontend/public/assets/generated/payout-badge.dim_128x128.png for visual branding. Handle loading and error states."
+          "path": "frontend/src/components/MatchThreeGame.tsx",
+          "operation": "modify",
+          "description": "Add shiny female Pokemon discovery mechanics by randomly spawning special shiny tiles using sprites from shiny-female-tiles.dim_512x512.png. When shiny tiles are matched, trigger discovery notification, add to discovered Pokemon list, and call the backend recordMatchResult method with the new shiny Pokemon data. Track discovered shinies to prevent duplicates and display sparkle effects using the shiny-sparkle.dim_128x128.png asset."
         },
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/components/ShinyDiscoveryNotification.tsx",
+          "operation": "create",
+          "description": "Create a modal or toast notification component that displays when a shiny female Pokemon is discovered during gameplay. Show the Pokemon name, shiny sprite, and sparkle animation using shiny-sparkle.dim_128x128.png. Use the shiny-pink theme color and animate the notification entrance/exit."
+        },
+        {
+          "path": "frontend/src/hooks/useGameLogic.ts",
           "operation": "modify",
-          "description": "Wire the PayoutManager component into the main app layout, adding navigation or a tab/section for payout management so users can access the payout tracking feature."
+          "description": "Extend the game logic hook to include shiny tile spawn rate logic, track which shiny female Pokemon have been discovered in the current session, and provide methods to check for and trigger shiny discoveries when matches occur."
         }
       ]
     },
     {
-      "id": "REQ-4",
-      "summary": "Apply Pokemon-themed visual design with vibrant colors, playful typography, and card-based layouts",
+      "id": "REQ-8",
+      "summary": "Create a payout calculation system that converts game-earned Pokecoins to Google Play payout amounts",
       "acceptanceCriteria": [
-        "UI uses a Pokemon-inspired color palette with vibrant accent colors",
-        "Typography is playful yet readable",
-        "Layout uses card-based components for Pokemon and transaction displays",
-        "Overall design feels cohesive and game-like"
+        "System calculates payout amounts based on accumulated Pokecoin earnings from gameplay",
+        "Conversion rate between Pokecoins and payout currency is defined and applied",
+        "Users can view how their game earnings translate to Google Play payouts",
+        "Payout records are automatically created when thresholds are met",
+        "Integration with existing PayoutManager component displays game-earned payouts"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/components/MatchThreeGame.tsx",
           "operation": "modify",
-          "description": "Update global styles to include a Pokemon-inspired color palette with vibrant yellows, reds, blues, and accent colors. Add custom font styling for playful yet readable typography. Define utility classes for card-based layouts and game-like visual effects."
+          "description": "Add payout threshold tracking that monitors accumulated Pokecoins and triggers payout calculation when thresholds are met. Display conversion information showing how game earnings translate to payout amounts. Call the backend calculatePayout and logPayout methods when thresholds are reached."
         },
         {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Extend the Tailwind configuration with Pokemon-themed color tokens (e.g., pokecoin-gold, shiny-pink, payout-green) and custom spacing/border-radius utilities for card-based layouts. Configure typography settings for playful font rendering."
+          "path": "frontend/src/components/GamePayoutSummary.tsx",
+          "operation": "create",
+          "description": "Create a component that displays the conversion rate between Pokecoins and payout currency, shows progress toward the next payout threshold, and provides a summary of game-earned payouts. Use the payout-green theme color and integrate with the existing PayoutManager component data."
         },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Ensure payout queries and mutations are properly invalidated when game-earned payouts are recorded. Verify integration between the game component and the existing payout tracking system."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add a new Game tab to the main app navigation to host the match-three tile game",
+      "acceptanceCriteria": [
+        "New 'Game' tab appears in the main navigation",
+        "Tab maintains consistent styling with existing Pokemon-themed UI",
+        "Game component loads when the tab is selected",
+        "Tab order is logical (e.g., Game, Pokecoins, Shiny Pokemon, Payouts)",
+        "Active tab state is preserved during navigation"
+      ],
+      "file_operations": [
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Apply Pokemon-themed styling to the main app layout using the new color palette and typography. Use card-based layout components from shadcn/ui (e.g., Card) to structure the interface cohesively. Ensure all sections feel visually unified with game-like aesthetics."
+          "description": "Add a new 'Game' tab to the existing tab navigation alongside Pokecoins, Shiny Pokemon, and Payouts tabs. Import and render the MatchThreeGame component when the Game tab is active. Maintain consistent tab styling with the Pokemon-themed UI and ensure proper tab state management. Order tabs logically: Game, Pokecoins, Shiny Pokemon, Payouts."
         }
       ]
     }

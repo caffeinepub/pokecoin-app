@@ -1,99 +1,127 @@
 {
   "kind": "build_request",
-  "title": "Build Pokecoin tracking app with shiny female Pokemon finder",
+  "title": "Add match-three tile game to earn Pokecoins and find shiny female Pokemon",
   "projectName": "Shiny Coin Tracker",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Create a Pokecoin balance tracking system that allows users to log and view their current Pokecoin balance from Pokemon Go",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Pokecoin app for Pokemon go"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Users can input their current Pokecoin balance",
-        "Users can view their Pokecoin balance history",
-        "Balance updates are persisted in the backend"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Implement a shiny female Pokemon tracker where users can log and search for shiny female Pokemon they've encountered or are seeking",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "finds shiny female pokemon"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Users can add shiny female Pokemon to their collection with species name",
-        "Users can view a list of all tracked shiny female Pokemon",
-        "Each Pokemon entry includes species identification",
-        "Users can mark Pokemon as found or desired"
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Create a payout management system where users can track and manage Google Play payout amounts associated with their Pokecoin earnings",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "pays out to Google play"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Users can record payout amounts in their local currency",
-        "Users can view payout history and totals",
-        "Payout records are linked to Pokecoin transactions",
-        "Users can see cumulative payout totals"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Design a cohesive Pokemon-themed visual interface with vibrant colors, playful typography, and card-based layouts that reflect the Pokemon universe aesthetic while maintaining clean usability",
+      "id": "REQ-5",
+      "text": "Implement a match-three tile game where users can play by swapping adjacent tiles to create matches of three or more identical Pokemon tiles",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-6"
+        ],
+        "quotes": [
+          "Add a match tree tile game"
         ]
       },
       "acceptanceCriteria": [
-        "UI uses a Pokemon-inspired color palette with vibrant accent colors",
-        "Typography is playful yet readable",
-        "Layout uses card-based components for Pokemon and transaction displays",
-        "Overall design feels cohesive and game-like"
+        "Game board displays a grid of Pokemon-themed tiles",
+        "Users can swap adjacent tiles by clicking or dragging",
+        "Three or more matching tiles in a row or column are detected and removed",
+        "New tiles fall from the top to fill empty spaces",
+        "Game includes visual feedback for valid/invalid moves and matches"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Award Pokecoins to users based on their match-three game performance, automatically updating their Pokecoin balance when they complete matches",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "to earn pokecoins"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each successful match awards a specific number of Pokecoins",
+        "Pokecoin rewards are calculated based on match size or combo chains",
+        "Game communicates earned Pokecoins to the backend to update user balance",
+        "User's total Pokecoin balance reflects game earnings in real-time",
+        "Visual feedback shows Pokecoins earned after each match"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Integrate shiny female Pokemon discovery into the match-three game, allowing users to encounter and unlock shiny female Pokemon through gameplay",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "find. Female shinies"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Shiny female Pokemon appear as rare special tiles during gameplay",
+        "When users match shiny female Pokemon tiles, the Pokemon is automatically logged to their collection",
+        "Visual notification appears when a shiny female Pokemon is discovered",
+        "Discovered shiny female Pokemon are added to the ShinyFemaleTracker component",
+        "Game tracks which shiny female Pokemon have been found to prevent duplicates"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Create a payout calculation system that determines Google Play payout amounts based on Pokecoins earned through the match-three game",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "get Google play payout"
+        ]
+      },
+      "acceptanceCriteria": [
+        "System calculates payout amounts based on accumulated Pokecoin earnings from gameplay",
+        "Conversion rate between Pokecoins and payout currency is defined and applied",
+        "Users can view how their game earnings translate to Google Play payouts",
+        "Payout records are automatically created when thresholds are met",
+        "Integration with existing PayoutManager component displays game-earned payouts"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add a new Game tab to the main app navigation that hosts the match-three tile game alongside the existing Pokecoins, Shiny Pokemon, and Payouts tabs",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ]
+      },
+      "acceptanceCriteria": [
+        "New 'Game' tab appears in the main navigation",
+        "Tab maintains consistent styling with existing Pokemon-themed UI",
+        "Game component loads when the tab is selected",
+        "Tab order is logical (e.g., Game, Pokecoins, Shiny Pokemon, Payouts)",
+        "Active tab state is preserved during navigation"
       ]
     }
   ],
   "constraints": [
-    "This app tracks user data locally and does not integrate with actual Pokemon Go APIs or services",
-    "Google Play payouts are tracked as records only; no actual payment processing integration is included",
-    "Pokemon data is user-entered; no automated Pokemon Go data sync"
+    "Maintain single-actor architecture in backend/main.mo",
+    "Preserve existing Pokecoin balance, shiny female Pokemon, and payout data structures",
+    "Do not modify immutable frontend paths: useInternetIdentity, useActor, main.tsx, components/ui",
+    "Game must use React, Tailwind CSS, and React Query consistent with existing stack",
+    "Maintain existing Pokemon-themed color scheme (pokecoin-gold, shiny-pink, payout-green)"
   ],
   "nonGoals": [
-    "Direct integration with Pokemon Go game servers or APIs",
-    "Actual Google Play payment processing or API integration",
-    "Real-time Pokemon location tracking or GPS features",
-    "Authentication with Pokemon Go accounts",
-    "Automated Pokemon discovery or detection"
+    "Multiplayer or real-time competitive gameplay",
+    "External game engines or WebGL rendering beyond standard React/CSS",
+    "Persistent game save states across sessions",
+    "Leaderboards or social sharing features",
+    "In-app purchases or real-money transactions",
+    "Complex game physics or particle systems"
   ],
   "imageRequirements": {
     "required": [
-      "Stylized Pokecoin icon illustration with metallic gold texture (pokecoin-icon.dim_256x256.png)",
-      "Shiny sparkle effect icon in pink and gold gradient (shiny-sparkle.dim_128x128.png)",
-      "Google Play payout badge icon in green and white (payout-badge.dim_128x128.png)"
+      "Set of colorful Pokemon tile sprites for the match-three game grid, featuring common Pokemon like Pikachu, Bulbasaur, Charmander, Squirtle, Eevee, and Jigglypuff in a cute illustrated style (pokemon-tiles.dim_512x512.png)",
+      "Special shiny female Pokemon tile sprites with sparkle effects for rare discoveries in the game (shiny-female-tiles.dim_512x512.png)",
+      "Game board background with a subtle Pokemon-themed pattern or texture (game-board-bg.dim_800x800.png)"
     ],
     "edits": []
   }

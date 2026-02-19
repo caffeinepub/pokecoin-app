@@ -3,7 +3,10 @@ import Text "mo:core/Text";
 import Iter "mo:core/Iter";
 import Principal "mo:core/Principal";
 import Runtime "mo:core/Runtime";
+import Array "mo:core/Array";
+import Migration "migration";
 
+(with migration = Migration.run)
 actor {
   type Pokemon = {
     name : Text;
@@ -15,6 +18,11 @@ actor {
     amount : Nat;
     currency : Text;
     date : Text;
+  };
+
+  type MatchResult = {
+    pokecoinsEarned : Nat;
+    newShinyPokemon : [Pokemon];
   };
 
   let pokecoinBalances = Map.empty<Principal, Nat>();
@@ -51,7 +59,7 @@ actor {
       case (?pokemons) { pokemons };
     };
 
-    userPokemons.values().toArray().filter(
+    userPokemons.filter(
       func(pokemon) {
         pokemon.isShiny and pokemon.isFemale and pokemon.name.contains(#text searchName);
       }
@@ -76,5 +84,23 @@ actor {
       case (null) { [] };
       case (?userPayouts) { userPayouts };
     };
+  };
+
+  public query ({ caller }) func calculatePayout(pokecoins : Nat) : async Nat {
+    pokecoins / 1000;
+  };
+
+  public shared ({ caller }) func recordMatchResult(pokecoinsEarned : Nat, newShinyPokemon : [Pokemon]) : async () {
+    let currentBalance = switch (pokecoinBalances.get(caller)) {
+      case (null) { 0 };
+      case (?balance) { balance };
+    };
+    pokecoinBalances.add(caller, currentBalance + pokecoinsEarned);
+
+    let existingPokemon = switch (pokemonData.get(caller)) {
+      case (null) { [] };
+      case (?pokemons) { pokemons };
+    };
+    pokemonData.add(caller, existingPokemon.concat(newShinyPokemon));
   };
 };

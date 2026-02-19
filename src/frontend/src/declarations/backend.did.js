@@ -20,9 +20,11 @@ export const Payout = IDL.Record({
 });
 
 export const idlService = IDL.Service({
+  'calculatePayout' : IDL.Func([IDL.Nat], [IDL.Nat], ['query']),
   'logPayout' : IDL.Func([IDL.Nat, IDL.Text, IDL.Text], [], []),
   'logPokecoinBalance' : IDL.Func([IDL.Nat], [], []),
   'logPokemon' : IDL.Func([IDL.Text, IDL.Bool, IDL.Bool], [], []),
+  'recordMatchResult' : IDL.Func([IDL.Nat, IDL.Vec(Pokemon)], [], []),
   'searchShinyFemalePokemon' : IDL.Func(
       [IDL.Text],
       [IDL.Vec(Pokemon)],
@@ -47,9 +49,11 @@ export const idlFactory = ({ IDL }) => {
   });
   
   return IDL.Service({
+    'calculatePayout' : IDL.Func([IDL.Nat], [IDL.Nat], ['query']),
     'logPayout' : IDL.Func([IDL.Nat, IDL.Text, IDL.Text], [], []),
     'logPokecoinBalance' : IDL.Func([IDL.Nat], [], []),
     'logPokemon' : IDL.Func([IDL.Text, IDL.Bool, IDL.Bool], [], []),
+    'recordMatchResult' : IDL.Func([IDL.Nat, IDL.Vec(Pokemon)], [], []),
     'searchShinyFemalePokemon' : IDL.Func(
         [IDL.Text],
         [IDL.Vec(Pokemon)],

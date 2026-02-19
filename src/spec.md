@@ -1,12 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Build a Pokecoin tracking app with shiny female Pokemon finder that allows Pokemon Go players to track their Pokecoin balance, Google Play payouts, and shiny female Pokemon collection.
+**Goal:** Add a match-three tile game where users swap Pokemon tiles to earn Pokecoins, discover shiny female Pokemon, and generate Google Play payouts.
 
 **Planned changes:**
-- Create a Pokecoin balance tracking system where users can log and view their current Pokecoin balance
-- Implement a shiny female Pokemon tracker for logging and searching shiny female Pokemon encounters
-- Build a payout management system to track Google Play payout amounts linked to Pokecoin earnings
-- Design a Pokemon-themed UI with vibrant colors, playful typography, and card-based layouts
+- Implement match-three tile game with swappable Pokemon tiles that detects and removes matching tiles
+- Award Pokecoins for successful matches with visual feedback
+- Integrate shiny female Pokemon as rare special tiles that unlock when matched
+- Create payout calculation system that converts Pokecoins earned from gameplay into Google Play payout amounts
+- Add a new Game tab to main navigation to host the match-three game
 
-**User-visible outcome:** Users can track their Pokecoin balance history, manage their shiny female Pokemon collection (marking them as found or desired), record Google Play payouts with cumulative totals, all within a cohesive Pokemon-themed interface.
+**User-visible outcome:** Users can play a match-three tile game from a new Game tab, earning Pokecoins with each match, discovering shiny female Pokemon through special rare tiles, and viewing how their gameplay earnings translate to Google Play payouts.

@@ -21,9 +21,11 @@ export interface Pokemon {
   'isFemale' : boolean,
 }
 export interface _SERVICE {
+  'calculatePayout' : ActorMethod<[bigint], bigint>,
   'logPayout' : ActorMethod<[bigint, string, string], undefined>,
   'logPokecoinBalance' : ActorMethod<[bigint], undefined>,
   'logPokemon' : ActorMethod<[string, boolean, boolean], undefined>,
+  'recordMatchResult' : ActorMethod<[bigint, Array<Pokemon>], undefined>,
   'searchShinyFemalePokemon' : ActorMethod<[string], Array<Pokemon>>,
   'viewPayouts' : ActorMethod<[], Array<Payout>>,
   'viewPokecoinBalance' : ActorMethod<[], bigint>,

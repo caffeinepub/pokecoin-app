@@ -93,3 +93,30 @@ export function useLogPayout() {
     },
   });
 }
+
+export function useCalculatePayout() {
+  const { actor } = useActor();
+
+  return useMutation({
+    mutationFn: async (pokecoins: bigint) => {
+      if (!actor) throw new Error('Actor not initialized');
+      return await actor.calculatePayout(pokecoins);
+    },
+  });
+}
+
+export function useRecordMatchResult() {
+  const { actor } = useActor();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ pokecoinsEarned, newShinyPokemon }: { pokecoinsEarned: bigint; newShinyPokemon: Pokemon[] }) => {
+      if (!actor) throw new Error('Actor not initialized');
+      return await actor.recordMatchResult(pokecoinsEarned, newShinyPokemon);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['pokecoinBalance'] });
+      queryClient.invalidateQueries({ queryKey: ['shinyFemalePokemon'] });
+    },
+  });
+}
